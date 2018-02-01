@@ -1,0 +1,11 @@
+<div *ngIf="post">
+  <h2>Post {{ post.title }} Details</h2>
+  <div>
+    <textarea [(ngModel)]='post.content' rows="10"></textarea>
+    <br/>
+    <button (click)="savePost()">Post</button>
+  </div>
+</div>
+<div>
+  <button (click)="goBack()">go back</button>
+</div>

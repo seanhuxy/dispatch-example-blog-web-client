@@ -1,0 +1,15 @@
+<h2> New Post </h2>
+<div>
+  <div>
+    <label>Post Title</label>
+    <input [(ngModel)]='post.title' />
+  </div>
+  <div>
+    <textarea [(ngModel)]='post.content' rows="10"></textarea>
+    <br/>
+  </div>
+  <div>
+    <button (click)="save(post)">Post</button>
+    <button (click)="cancel()">go back</button>
+  </div>
+</div>
