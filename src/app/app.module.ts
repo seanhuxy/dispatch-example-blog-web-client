@@ -23,7 +23,9 @@ import { EditorComponent } from './editor/editor.component';
     AppRoutingModule,
     HttpModule
   ],
-  providers: [PostService],
+  providers: [
+    PostService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

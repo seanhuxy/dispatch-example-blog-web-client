@@ -5,6 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
 
 import { Post } from './post'
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class PostService {
@@ -19,10 +20,10 @@ export class PostService {
   }
 
   getHost() {
-    // TODO: move this config into a better place
-    // add instructions of import the correct hostname and port in README
-    let port = 31841
-    let host = "https://api.dev.dispatch.vmware.com"
+    let port = environment.port
+    let host = environment.host
+    // let port = 31841
+    // let host = "https://api.dev.dispatch.vmware.com"
     return `${host}:${port}`;
   }
 

@@ -7,14 +7,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Connect to Blog backend server
 
 The nodejs backend should deployment at a dispatch cluster.
-Please go to the project [dispatch-example-blog-web-server](https://github.com/seanhuxy/dispatch-example-blog-web-server) for detail information on how to deploy it.
+Please go to the project [dispatch-example-blog-web-server](https://github.com/vmware/dispatch/tree/master/examples/blog) for detail information on how to deploy it.
 
 You need to complete the Milestone II before continue with this instruction.
 
 You should now have your dispatch api-gateway hostname and port in hand.
 
-### TODO: find a beter place for configuration variables
-Please update ``host`` and ``port`` varibales in ``src/app/post.service.ts`` accordingly
+Please replace the ``host`` and ``port`` values in ``src/app/environment/environment.ts`` with yours.
 
 ## Development server
 
