@@ -2,7 +2,7 @@
 SHELL = /bin/sh
 BUILD = $(shell date +%s)
 
-DOCKER_REGISTRY = vmware
+DOCKER_REGISTRY = seanhu93
 PACKAGE = dispatch-example-blog-web-client
 TAG = 0.0.1
 
@@ -32,6 +32,10 @@ local: build
 	ng serve
 
 .PHONY: run
+run: NAME = blog-web-client
 run:
-	-docker rm -f blog-web-client # ignore errors
-	docker run -d -p 4200:80 --name blog-web-client $(IMAGE)
+	-docker rm -f $(NAME) # ignore errors
+	docker create --name $(NAME) -p 4200:80 $(IMAGE)
+	docker cp config.js $(NAME):/usr/share/nginx/html
+	docker start $(NAME)
+
