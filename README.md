@@ -13,13 +13,30 @@ You need to complete the Milestone II before continue with this instruction.
 
 You should now have your dispatch api-gateway hostname and port in hand.
 
-Please replace the ``host`` and ``port`` values in ``src/app/environment/environment.ts`` with yours.
+Please replace the ``host`` and ``port`` values in ``config.json`` with yours.
 
-## Development server
+## Build, Deploy & Run
 
-Run `ng serve --open` for a dev server, your browser should open and navigate to ```http://localhost:4200/`` in a second.
+Compile angular 2.0 app
 
-You should now see your blog!
+``make build``
+
+Build Docker Image
+
+``make docker``
+
+Start the server
+``make run``
+
+The server will listen on ``http://${docker-ip}:4200``
+
+Please replace ``${docker-ip}`` with your local docker IP address
+
+<!-- ## Development server
+
+Run `ng serve --open` for a dev server, your browser should open and navigate to http://localhost:4200/ in a second.
+
+You should now see your blog! -->
 
 ## Host your blog at a object store (e.g. S3)
 

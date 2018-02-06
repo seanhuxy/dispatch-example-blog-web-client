@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http, RequestOptions, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
@@ -6,12 +6,19 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 
 import { Post } from './post'
-import { environment } from '../environments/environment';
+
+import { APP_CONFIG, AppConfig } from './app.config';
 
 @Injectable()
 export class PostService {
 
-  constructor(private http: Http) { }
+  config: AppConfig
+
+  constructor(
+    @Inject(APP_CONFIG) config: AppConfig,
+    private http: Http) {
+    this.config = config
+  }
 
   getRequestOptions(): RequestOptions {
     let headers = new Headers();
@@ -21,8 +28,9 @@ export class PostService {
   }
 
   getHost() {
-    let port = environment.port
-    let host = environment.host
+    let port = this.config.port
+    let host = this.config.host
+    console.log("injection: port: " + port)
     return `${host}:${port}`;
   }
 

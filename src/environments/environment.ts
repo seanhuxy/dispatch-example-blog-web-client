@@ -5,6 +5,4 @@
 
 export const environment = {
   production: false,
-  port: 31841,
-  host: "https://api.dev.dispatch.vmware.com"
 };
