@@ -1,11 +1,15 @@
-<div *ngIf="post">
-  <h2>Post {{ post.title }} Details</h2>
-  <div>
-    <textarea [(ngModel)]='post.content' rows="10"></textarea>
-    <br/>
-    <button (click)="savePost()">Post</button>
+<form *ngIf="post">
+  <h1>Post {{ post.title }} Details</h1>
+  <section class="form-block">
+    <textarea name="content" [(ngModel)]='post.content' rows="20"></textarea>
+    <button class="btn btn-primary" (click)="savePost()">Save Post</button>
+    <button class="btn btn-secondary" routerLink="">Cancel</button>
+  </section>
+</form>
+
+<clr-modal [(clrModalOpen)]="modelOpen" [clrModalClosable]="false">
+  <h3 class="modal-title">{{message}}</h3>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modelOpen = false">OK</button>
   </div>
-</div>
-<div>
-  <button (click)="goBack()">go back</button>
-</div>
+</clr-modal>

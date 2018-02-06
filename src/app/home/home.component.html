@@ -1,10 +1,19 @@
-<div>
-  <h2>Posts</h2>
-  <ul>
-    <li *ngFor="let post of posts">
-      <a routerLink="/post/{{post.id}}">
-        {{post.title}}
-      </a>
-    </li>
-  </ul>
+<div class="row">
+  <div *ngFor="let post of posts" class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+      <div class="card-block">
+        <div class="card-title">
+          {{post.title}}
+        </div>
+        <div class="card-text">
+          <p class="card-overflow">
+            {{post.content}}
+          </p>
+        </div>
+        <div class="card-footer">
+          <button routerLink="/post/{{post.id}}" class="btn btn-sm btn-link">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

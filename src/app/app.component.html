@@ -1,11 +1,17 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    {{title}}!
-  </h1>
+<div class="main-container">
+  <header class="header-6">
+    <div class="header-nav">
+      <a class="nav-link" routerLink="">
+        <span class="nav-text">Home</span>
+      </a>
+      <a class="nav-link" routerLink="new">
+        <span class="nav-text">New Post</span>
+      </a>
+    </div>
+  </header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
-<nav>
-  <a routerLink="">Home</a>
-  <a routerLink="new">New Post</a>
-</nav>
-<router-outlet></router-outlet>

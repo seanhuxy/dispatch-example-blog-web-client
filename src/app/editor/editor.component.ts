@@ -18,11 +18,22 @@ export class EditorComponent implements OnInit {
 
   post: Post
 
+  message: string
+  modelOpen: boolean
+
   save(post) {
     // note: a simple way to keep id unique by using epoch time
     // however, don't use in production
     post.id = new Date().getTime().toString()
-    this.postService.addPost(post)
+    this.postService.addPost(post).then((saved) => {
+      if (saved) {
+        this.message = "Post saved"
+        this.modelOpen = true
+      } else {
+        this.message = "There's some error while saving your post"
+        this.modelOpen = true
+      }
+    })
   }
 
   cancel() {
@@ -32,7 +43,7 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
     this.post = {
       id: "",
-      title: "Untitled Post",
+      title: "Untitled",
       content: ""
     }
   }

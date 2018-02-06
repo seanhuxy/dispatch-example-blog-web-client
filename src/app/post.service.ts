@@ -3,6 +3,7 @@ import { Http, RequestOptions, Headers } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
 
 import { Post } from './post'
 import { environment } from '../environments/environment';
@@ -22,8 +23,6 @@ export class PostService {
   getHost() {
     let port = environment.port
     let host = environment.host
-    // let port = 31841
-    // let host = "https://api.dev.dispatch.vmware.com"
     return `${host}:${port}`;
   }
 
@@ -34,7 +33,7 @@ export class PostService {
     return this.http.get(url, this.getRequestOptions()).toPromise()
       .then((response) => {
         let posts = response.json()["post"]
-        console.log("getPosts response:" + JSON.stringify(posts))
+        // console.log("getPosts response:" + JSON.stringify(posts))
         return posts as Post[]
       })
       .catch((err) => {
@@ -56,7 +55,7 @@ export class PostService {
       });
   }
 
-  updatePost(post) {
+  updatePost(post): Promise<boolean> {
     let url = `${this.getHost()}/post/update`;
     let body = JSON.stringify({
       "op": "update",
@@ -64,14 +63,19 @@ export class PostService {
     })
     return this.http.patch(url, body, this.getRequestOptions()).toPromise()
       .then((response) => {
-        console.log("update post response:" + response)
+        if (response.json()["error"] === undefined) {
+          return true
+        } else {
+          return false
+        }
       })
       .catch((err) => {
         console.error(`error updating post ${err}`)
+        return false
       });
   }
 
-  addPost(post) {
+  addPost(post): Promise<boolean> {
     let url = `${this.getHost()}/post/add`;
     let body = JSON.stringify({
       "op": "add",
@@ -79,10 +83,15 @@ export class PostService {
     })
     return this.http.post(url, body, this.getRequestOptions()).toPromise()
       .then((response) => {
-        console.log("add post response:" + response)
+        if (response.json()["error"] === undefined) {
+          return true
+        } else {
+          return false
+        }
       })
       .catch((err) => {
         console.error(`error adding post ${err}`)
+        return false
       });
   }
 

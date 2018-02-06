@@ -1,15 +1,18 @@
-<h2> New Post </h2>
-<div>
-  <div>
-    <label>Post Title</label>
-    <input [(ngModel)]='post.title' />
+<form>
+  <h1>New Post: </h1>
+  <section class="form-block">
+    <input name="title" [(ngModel)]='post.title' placeholder="Untitled"
+    />
+    <textarea name="content" [(ngModel)]='post.content' placeholder="content goes here..."
+      rows="15"></textarea>
+    <button class="btn btn-primary" (click)="save(post)">Save Post</button>
+    <button class="btn btn-secondary" routerLink="">Cancel</button>
+  </section>
+</form>
+
+<clr-modal [(clrModalOpen)]="modelOpen" [clrModalClosable]="false">
+  <h3 class="modal-title">{{message}}</h3>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modelOpen = false">OK</button>
   </div>
-  <div>
-    <textarea [(ngModel)]='post.content' rows="10"></textarea>
-    <br/>
-  </div>
-  <div>
-    <button (click)="save(post)">Post</button>
-    <button (click)="cancel()">go back</button>
-  </div>
-</div>
+</clr-modal>
