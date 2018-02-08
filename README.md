@@ -19,11 +19,12 @@ If you want to have a quick view of your blog from a web browser without getting
 
 First, configure your dispatch api-gateway IP and port into a ``config.json`` file
 ```
-$ cat << EOF > config.js
+cat << EOF > config.js
 APP_CONFIG = {
-    host: "https://api.dev.dispatch.vmware.com",
+    host: "https://dispatch.local",
     port: 31841,
 }
+EOF
 ```
 
 Then, pull and run a pre-built docker image
@@ -59,11 +60,12 @@ Replace the ``DOCKER_REGISTRY`` in Makefile with your own docker register
 
 configure your dispatch api-gateway IP and port into a ``config.json`` file
 ```
-$ cat << EOF > config.js
+cat << EOF > config.js
 APP_CONFIG = {
-    host: "https://api.dev.dispatch.vmware.com",
+    host: "https://dispatch.local",
     port: 31841,
 }
+EOF
 ```
 #### Run
 

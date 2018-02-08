@@ -1,4 +1,4 @@
 APP_CONFIG = {
-    host: "https://api.dev.dispatch.vmware.com",
+    host: "https://dispatch.local",
     port: 31841,
 }
